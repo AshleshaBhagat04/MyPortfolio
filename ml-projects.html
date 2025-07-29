@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & ML Projects - Ashlesha Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ml-projects.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-left">
+                <a href="index.html" class="nav-link">← Back to Home</a>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="nav-link">All Projects</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="projects-container">
+            <div class="page-header">
+                <h1 class="page-title">AI & ML Projects</h1>
+                <p class="page-subtitle">Explore my machine learning and artificial intelligence projects</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project Tile 1 -->
+                <div class="project-tile">
+                    <div class="project-image">
+                        <img src="images/people-code-website.PNG" alt="PeopleCode.AI Website">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">PeopleCode.AI Website</h3>
+                        <p class="project-description">PeopleCode.AI enables anyone to create customized chatbots and AI apps with step-by-step tutorials—no coding experience needed.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">OpenAI API</span>
+                            <span class="skill-tag">Cursor</span>
+                            <span class="skill-tag">Thunkable</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Tile 2 -->
+                <div class="project-tile">
+                    <div class="project-image">
+                        <img src="images/mary-chatbot.PNG" alt="Mary - A Customised Chatbot">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Mary - Your Guide to Women in Computing</h3>
+                        <p class="project-description">An advanced custom chatbot that tells you all about women in computing and makes calling cards for them as well!</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">ZeroWidth</span>
+                            <span class="skill-tag">Vercel</span>
+                            <span class="skill-tag">Framer</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Tile 3 -->
+                <div class="project-tile">
+                    <div class="project-image">
+                        <img src="images/predicting-anime-scores.png" alt="Predicting Anime Scores">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Predicting Anime Scores Using ML Models</h3>
+                        <p class="project-description">Explore the potential of machine learning models to predict anime scores based on different features.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Regression Models</span>
+                            <span class="skill-tag">Classification Models</span>
+                            <span class="skill-tag">Colab Notebooks</span>
+                            <span class="skill-tag">Feature Engineering</span>
+                            <span class="skill-tag">Data Cleaning and Preprocessing</span>
+                            <span class="skill-tag">ML Modelling and Evaluation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <a href="#" class="footer-link">Contact Me</a>
+            </div>
+            <div class="footer-center">
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/AshleshaBhagat04" class="footer-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/ashlesha-bhagat/" class="footer-link">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <span id="modalCategory" class="modal-category"></span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <div class="modal-links">
+                        <a id="modalProjectLink" href="#" target="_blank" class="modal-link project-link">
+                            <span>Project Link</span>
+                        </a>
+                    </div>
+                    
+                    <h3>About</h3>
+                    <p id="modalDescription"></p>
+                    
+                    <h3>Inspiration</h3>
+                    <p id="modalInspiration"></p>
+                    
+                    <h3>What I Learned</h3>
+                    <p id="modalLearned"></p>
+                    
+                    <h3>Skills</h3>
+                    <div id="modalSkills" class="modal-skills"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ml-projects.js"></script>
+</body>
+</html> 

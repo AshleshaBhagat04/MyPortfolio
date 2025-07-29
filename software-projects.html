@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineering Projects - Ashlesha Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="software-projects.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-left">
+                <a href="index.html" class="nav-link">← Back to Home</a>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="nav-link">All Projects</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="projects-container">
+            <div class="page-header">
+                <h1 class="page-title">Software Engineering Projects</h1>
+                <p class="page-subtitle">Explore my full-stack development and software engineering projects</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project Tile 1 -->
+                <div class="project-tile">
+                    <div class="project-image">
+                        <img src="images/student-housing-app.PNG" alt="Student Housing App">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Student Housing App</h3>
+                        <p class="project-description">Prototype of a mobile app to streamline student housing searches</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Design Thinking</span>
+                            <span class="skill-tag">UX Principles</span>
+                            <span class="skill-tag">Persona Creation</span>
+                            <span class="skill-tag">User Interviews</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Tile 2 -->
+                <div class="project-tile">
+                    <div class="project-image">
+                        <img src="images/people-code-website.PNG" alt="PeopleCode.AI Website">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">PeopleCode.AI Website</h3>
+                        <p class="project-description">PeopleCode.AI enables anyone to create customized chatbots and AI apps with step-by-step tutorials—no coding experience needed.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">OpenAI API</span>
+                            <span class="skill-tag">Cursor</span>
+                            <span class="skill-tag">Thunkable</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Tile 3 -->
+                <div class="project-tile">
+                    <div class="project-image">
+                        <img src="images/ctrl-z.PNG" alt="Context Sensitive Selective Undo">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Context Sensitive Selective Undo</h3>
+                        <p class="project-description">An algorithm that redefines undo by mixing selective and context sensitive properties of elements</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Algorithm Design</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Godot</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Tile 4 -->
+                <div class="project-tile">
+                    <div class="project-image">
+                        <img src="images/cryptolearner.PNG" alt="CryptoLearner">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">CryptoLearner</h3>
+                        <p class="project-description">A fun edtech app that teaches users crytpo concepts!!</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Qt for Python</span>
+                            <span class="skill-tag">Computer App Design</span>
+                            <span class="skill-tag">Cryptology</span>
+                            <span class="skill-tag">Graphical User Interface</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Tile 5 -->
+                <div class="project-tile">
+                    <div class="project-image">
+                        <img src="images/scrum-app.PNG" alt="ScrumApp">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ScrumApp</h3>
+                        <p class="project-description">A scrum app to helpprofessors and students keep track of class projects</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">JavaFX</span>
+                            <span class="skill-tag">Gradle</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Agile Methodology</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <a href="#" class="footer-link">Contact Me</a>
+            </div>
+            <div class="footer-center">
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/AshleshaBhagat04" class="footer-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/ashlesha-bhagat/" class="footer-link">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <span id="modalCategory" class="modal-category"></span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <div class="modal-links">
+                        <a id="modalProjectLink" href="#" target="_blank" class="modal-link project-link">
+                            <span>Project Link</span>
+                        </a>
+                    </div>
+                    
+                    <h3>About</h3>
+                    <p id="modalDescription"></p>
+                    
+                    <h3>Inspiration</h3>
+                    <p id="modalInspiration"></p>
+                    
+                    <h3>What I Learned</h3>
+                    <p id="modalLearned"></p>
+                    
+                    <h3>Skills</h3>
+                    <div id="modalSkills" class="modal-skills"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="software-projects.js"></script>
+</body>
+</html> 
