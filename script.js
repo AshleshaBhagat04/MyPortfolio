@@ -1,154 +1,125 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.querySelector('.search-input');
-    const aiMlBtn = document.querySelector('.ai-ml-btn');
-    const searchContainer = document.querySelector('.search-input-container');
+    // Add smooth scrolling for better UX
+    document.documentElement.style.scrollBehavior = 'smooth';
 
-    // Focus search input on page load
-    searchInput.focus();
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectTiles = document.querySelectorAll('.project-tile');
 
-    // Project database for search functionality
-    const projectDatabase = {
-        // Software Projects (5)
-        'housing': { 
-            category: 'software', 
-            title: 'Student Housing App', 
-            description: 'Prototype of a mobile app to streamline student housing searches',
-            skills: ['Figma', 'Design Thinking', 'UX Principles', 'Persona Creation', 'User Interviews'] 
-        },
-        'peoplecode': { 
-            category: 'software', 
-            title: 'PeopleCode.AI Website', 
-            description: 'PeopleCode.AI enables anyone to create customized chatbots and AI apps with step-by-step tutorials—no coding experience needed.',
-            skills: ['Python', 'OpenAI API', 'Cursor', 'Thunkable', 'React', 'GitHub', 'Node.js'] 
-        },
-        'undo': { 
-            category: 'software', 
-            title: 'Context Sensitive Selective Undo', 
-            description: 'An algorithm that redefines undo by mixing selective and context sensitive properties of elements',
-            skills: ['Python', 'Java', 'Algorithm Design', 'Figma', 'Godot'] 
-        },
-        'crypto': { 
-            category: 'software', 
-            title: 'CryptoLearner', 
-            description: 'A fun edtech app that teaches users crypto concepts!!',
-            skills: ['Python', 'Qt for Python', 'Computer App Design', 'Cryptology', 'Graphical User Interface'] 
-        },
-        'scrum': { 
-            category: 'software', 
-            title: 'ScrumApp', 
-            description: 'A scrum app to help professors and students keep track of class projects',
-            skills: ['JavaFX', 'Gradle', 'SQL', 'Java', 'Agile Methodology'] 
-        },
-        
-        // ML Projects (3)
-        'peoplecode': { 
-            category: 'ml', 
-            title: 'PeopleCode.AI Website', 
-            description: 'PeopleCode.AI enables anyone to create customized chatbots and AI apps with step-by-step tutorials—no coding experience needed.',
-            skills: ['Python', 'OpenAI API', 'Cursor', 'Thunkable', 'React', 'GitHub', 'Node.js'] 
-        },
-        'mary': { 
-            category: 'ml', 
-            title: 'Mary - Your Guide to Women in Computing', 
-            description: 'An advanced custom chatbot that tells you all about women in computing and makes calling cards for them as well!',
-            skills: ['ZeroWidth', 'Vercel', 'Framer', 'GitHub', 'JavaScript'] 
-        },
-        'anime': { 
-            category: 'ml', 
-            title: 'Predicting Anime Scores Using ML Models', 
-            description: 'Explore the potential of machine learning models to predict anime scores based on different features.',
-            skills: ['Scikit-learn', 'Pandas', 'NumPy', 'Regression Models', 'Classification Models', 'Colab Notebooks', 'Feature Engineering', 'Data Cleaning and Preprocessing', 'ML Modelling and Evaluation'] 
-        },
-    };
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
 
-    // Search functionality
-    function performSearch() {
-        const query = searchInput.value.trim();
-        if (query) {
-            // Navigate to search results page
-            window.location.href = `search-results.html?q=${encodeURIComponent(query)}`;
-        }
-    }
+            const filter = this.getAttribute('data-filter');
 
-    // Project category functions
-    function openSoftwareEngineering() {
-        const query = searchInput.value.trim();
-        if (query) {
-            // Navigate to software projects page with search query
-            window.location.href = `software-projects.html?search=${encodeURIComponent(query)}`;
-        } else {
-            // Navigate to software projects page
-            window.location.href = 'software-projects.html';
-        }
-    }
-
-    function openAIML() {
-        const query = searchInput.value.trim();
-        if (query) {
-            // Navigate to ML projects page with search query
-            window.location.href = `ml-projects.html?search=${encodeURIComponent(query)}`;
-        } else {
-            // Navigate to ML projects page
-            window.location.href = 'ml-projects.html';
-        }
-    }
-
-    // Event listeners
-    (document.querySelector('.software-btn')).addEventListener('click', openSoftwareEngineering);
-    aiMlBtn.addEventListener('click', openAIML);
-
-    // Enter key to search
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            performSearch();
-        }
-    });
-
-    // Real-time search suggestions
-    let searchSuggestions = [
-        'react', 'vue', 'angular', 'javascript', 'next', 'code',
-        'portrait', 'character', 'ui', '3d', 'motion', 'abstract',
-        'image', 'nlp', 'recommendation', 'forecasting', 'vision', 'reinforcement',
-        'assistant', 'support', 'tutor', 'healthcare', 'shopping', 'language'
-    ];
-
-    // Add some interactivity to the search box
-    searchInput.addEventListener('input', function() {
-        const query = this.value.trim();
-        if (query.length > 0) {
-            // Add a subtle animation
-            searchContainer.style.transform = 'scale(1.01)';
-            setTimeout(() => {
-                searchContainer.style.transform = 'scale(1)';
-            }, 150);
-        }
-    });
-
-    // Add hover effects for buttons
-    const buttons = document.querySelectorAll('.software-btn, .ai-ml-btn');
-    buttons.forEach(button => {
-        button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-1px)';
-        });
-        
-        button.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
+            // Filter projects
+            projectTiles.forEach(tile => {
+                const category = tile.getAttribute('data-category');
+                
+                const projectTitle = tile.querySelector('.project-title').textContent;
+                const project = projectData[projectTitle];
+                let shouldShow = false;
+                
+                if (filter === 'all') {
+                    shouldShow = true;
+                } else if (category === filter) {
+                    shouldShow = true;
+                } else if (project && Array.isArray(project.category)) {
+                    // Map filter values to category names
+                    const filterMap = {
+                        'software': 'Software Engineering',
+                        'ml': 'AI/ML',
+                        'uiux': 'UI/UX'
+                    };
+                    const mappedFilter = filterMap[filter];
+                    shouldShow = project.category.includes(mappedFilter);
+                }
+                
+                if (shouldShow) {
+                    tile.style.display = 'flex';
+                    tile.style.animation = 'fadeIn 0.5s ease-in-out';
+                } else {
+                    tile.style.display = 'none';
+                }
+            });
         });
     });
 
-    // Add keyboard navigation
+    // Project data is now loaded from project-details.js
+
+    // Modal functionality
+    const modal = document.getElementById('projectModal');
+    const closeBtn = document.querySelector('.close');
+
+    // Add project tile interactions
+    projectTiles.forEach(tile => {
+        tile.addEventListener('click', function() {
+            const projectTitle = this.querySelector('.project-title').textContent;
+            
+            if (projectData[projectTitle]) {
+                openModal(projectData[projectTitle]);
+            }
+        });
+
+        // Add keyboard navigation for project tiles
+        tile.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+
+        // Make project tiles focusable
+        tile.setAttribute('tabindex', '0');
+    });
+
+    // Function to open modal
+    function openModal(project) {
+        document.getElementById('modalTitle').textContent = project.title;
+        document.getElementById('modalCategory').textContent = Array.isArray(project.category) ? project.category.join(', ') : project.category;
+        document.getElementById('modalImage').src = project.image;
+        document.getElementById('modalImage').alt = project.title;
+        document.getElementById('modalDescription').textContent = project.description;
+        document.getElementById('modalOverview').textContent = project.overview;
+        document.getElementById('modalMotivationPurpose').textContent = project['motivation/purpose'];
+        document.getElementById('modalProjectLink').href = project.projectLink;
+
+        // Populate skills
+        const skillsContainer = document.getElementById('modalSkills');
+        skillsContainer.innerHTML = '';
+        project.skills.forEach(skill => {
+            const skillTag = document.createElement('span');
+            skillTag.className = 'skill-tag';
+            skillTag.textContent = skill;
+            skillsContainer.appendChild(skillTag);
+        });
+
+
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Function to close modal
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close modal events
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close modal with Escape key
     document.addEventListener('keydown', function(e) {
-        // Ctrl+K or Cmd+K to focus search
-        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-            e.preventDefault();
-            searchInput.focus();
-            searchInput.select();
-        }
-        
-        // Escape to clear search
-        if (e.key === 'Escape') {
-            searchInput.value = '';
-            searchInput.focus();
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            closeModal();
         }
     });
 
@@ -158,10 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const linkText = this.textContent;
-            if (linkText === 'All Projects') {
-                // Navigate to search results page to show all projects
-                window.location.href = 'search-results.html';
-            }
+            // Navigation links can be added here if needed
         });
     });
 
@@ -169,58 +137,80 @@ document.addEventListener('DOMContentLoaded', function() {
     const footerLinks = document.querySelectorAll('.footer-link');
     footerLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
             const linkText = this.textContent;
             if (linkText === 'Contact Me') {
+                e.preventDefault();
                 alert('Feel free to reach out at bhagata@union.edu');
+            } else if (linkText === 'GitHub' || linkText === 'LinkedIn') {
+                // Allow default behavior for GitHub and LinkedIn links
+                return;
             } else {
+                e.preventDefault();
                 alert(`${linkText} page would open here. This is a demo version.`);
             }
         });
     });
 
-    // Add smooth scrolling for better UX
-    document.documentElement.style.scrollBehavior = 'smooth';
-
-    // Add loading animation for search
-    function showSearchLoading() {
-        (document.querySelector('.software-btn')).textContent = 'Loading...';
-        (document.querySelector('.software-btn')).disabled = true;
-        
-        setTimeout(() => {
-            (document.querySelector('.software-btn')).textContent = 'Software Engineering';
-            (document.querySelector('.software-btn')).disabled = false;
-        }, 2000);
-    }
-
-    // Enhanced search with loading animation
-    const originalSearchFunction = performSearch;
-    performSearch = function() {
-        const query = searchInput.value.trim();
-        if (query) {
-            showSearchLoading();
-            setTimeout(() => {
-                originalSearchFunction();
-            }, 500);
-        } else {
-            originalSearchFunction();
-        }
+    // Add scroll animations for project tiles
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Apply initial styles and observe project tiles
+    projectTiles.forEach((tile, index) => {
+        tile.style.opacity = '0';
+        tile.style.transform = 'translateY(20px)';
+        tile.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(tile);
+    });
+
+    // Add parallax effect to hero section
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const heroImage = document.querySelector('.hero-image img');
+        if (heroImage) {
+            heroImage.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    });
 
     // Add responsive design enhancements
     function handleResize() {
         const width = window.innerWidth;
-        const searchContainer = document.querySelector('.search-container');
+        const contentGrid = document.querySelector('.content-grid');
         
-        if (width < 480) {
-            searchContainer.style.padding = '0 10px';
+        if (width < 1024) {
+            // Stack layout for smaller screens
+            if (contentGrid) {
+                contentGrid.style.gridTemplateColumns = '1fr';
+            }
         } else {
-            searchContainer.style.padding = '0';
+            // Two column layout for larger screens
+            if (contentGrid) {
+                contentGrid.style.gridTemplateColumns = '1fr 1fr';
+            }
         }
     }
 
     window.addEventListener('resize', handleResize);
     handleResize(); // Call on initial load
 
-    console.log('Ashlesha Search Homepage loaded successfully!');
+    // Add loading animation for the page
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+
+    console.log('Ashlesha Portfolio Homepage loaded successfully!');
 }); 
