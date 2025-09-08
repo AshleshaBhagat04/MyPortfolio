@@ -1,5 +1,3 @@
-/* Google Homepage Clone Styles */
-
 * {
     margin: 0;
     padding: 0;
@@ -102,13 +100,23 @@ body {
 
 /* Content Grid */
 .content-grid {
-    display: flex;           /* make children (about + projects) align horizontally */
-    gap: 2rem;               /* space between the sections */
-    align-items: flex-start; /* align tops together */
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
     padding: 40px;
     width: 100%;
     margin: 0;
     min-height: 60vh;
+}
+
+/* Desktop widths: About = 3/8, Projects = 5/8 */
+.about-section {
+    flex: 0 0 37.5%; /* fixed 3/8 width */
+}
+
+.projects-section {
+    flex: 0 0 62.5%; /* fixed 5/8 width */
+    min-width: 0; /* prevent overflow */
 }
 
 /* Projects Section */
@@ -264,9 +272,6 @@ body {
 .about-section {
     background: transparent;
     padding: 0;
-    max-width: 350px;
-    flex: 0 0 350px; /* don't grow, don't shrink, fixed width */
-    min-width: 0; /* prevent overflow issues */
 }
 
 .about-content {
@@ -350,7 +355,6 @@ body {
 /* Responsive Design */
 @media (max-width: 1024px) {
     .content-grid {
-        grid-template-columns: 1fr;
         gap: 30px;
         padding: 30px 20px;
     }
@@ -363,22 +367,15 @@ body {
     }
     
     .content-grid {
+        flex-direction: column;
         padding: 20px 15px;
         gap: 25px;
     }
-    
-    .projects-section,
-    .about-section {
-        padding: 20px;
-    }
-    
-    /* Reorder sections in mobile: About Me first, then Projects */
-    .about-section {
-        order: 1;
-    }
-    
+
+    .about-section,
     .projects-section {
-        order: 2;
+        flex: 1 0 100%; /* full width each */
+        padding: 20px;
     }
     
     .section-title {
@@ -427,22 +424,15 @@ body {
     }
     
     .content-grid {
+        flex-direction: column;
         padding: 15px 10px;
         gap: 20px;
     }
-    
-    .projects-section,
-    .about-section {
-        padding: 15px;
-    }
-    
-    /* Reorder sections in mobile: About Me first, then Projects */
-    .about-section {
-        order: 1;
-    }
-    
+
+    .about-section,
     .projects-section {
-        order: 2;
+        flex: 1 0 100%; /* full width each */
+        padding: 15px;
     }
     
     .section-title {
