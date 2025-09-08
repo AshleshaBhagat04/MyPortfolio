@@ -360,7 +360,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
     .hero-section {
         height: 30vh;
         min-height: 200px;
