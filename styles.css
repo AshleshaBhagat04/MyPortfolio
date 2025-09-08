@@ -372,6 +372,15 @@ body {
         padding: 20px;
     }
     
+    /* Reorder sections in mobile: About Me first, then Projects */
+    .about-section {
+        order: 1;
+    }
+    
+    .projects-section {
+        order: 2;
+    }
+    
     .section-title {
         font-size: 1.5rem;
     }
@@ -425,6 +434,15 @@ body {
     .projects-section,
     .about-section {
         padding: 15px;
+    }
+    
+    /* Reorder sections in mobile: About Me first, then Projects */
+    .about-section {
+        order: 1;
+    }
+    
+    .projects-section {
+        order: 2;
     }
     
     .section-title {
